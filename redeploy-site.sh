@@ -1,7 +1,7 @@
 #!/bin/bash
 
 PROJECT_DIR="/root/mlh-portfolio"
-START_SCRIPT="/root/start-server.sh"
+START_SCRIPT="/root/start_server.sh"
 TMUX_SESSION="flask_server"
 
 echo "Starting redeployment process..."
@@ -34,7 +34,7 @@ else
 fi
 
 echo "-> Starting new server in tmux session named '$TMUX_SESSION'..."
-tmux new -s "$TMUX_SESSION" "../start-server.sh"
+tmux new-session -d -s flask_server "/root/start_server.sh"
 
 echo ""
 echo "Redeployment complete!"
