@@ -1,35 +1,43 @@
 #!/bin/bash
 
-PROJECT_DIR="~/mlh-portfolio"
+PROJECT_DIR="/root/mlh-portfolio"
+START_SCRIPT="/root/start-server.sh"
 TMUX_SESSION="flask_server"
 
-echo "Starting redeployment "
+echo "Starting redeployment process..."
 
-PROJECT_DIR_EXPANDED=$(eval echo "$PROJECT_DIR")
 
-echo "Stopping any existing tmux sessions..."
+echo "-> Stopping any existing tmux sessions..."
 tmux kill-server || true
 echo "Done."
 
-cd "$PROJECT_DIR_EXPANDED" || { echo "Error: Project directory not found. Aborting."; exit 1; }
+echo "-> Navigating to project directory: $PROJECT_DIR"
+cd "$PROJECT_DIR" || { echo "Error: Project directory not found. Aborting."; exit 1; }
+echo "Done."
 
-echo "Fetching the latest code from GitHub..."
+echo "-> Fetching the latest code from GitHub..."
 git fetch origin
 git reset --hard origin/main
+echo "Done."
 
-VENV_PATH="venv/bin/activate"
+VENV_PATH=".venv/bin/activate"
 if [ -f "$VENV_PATH" ]; then
+    echo "-> Activating Python virtual environment..."
     source "$VENV_PATH"
+    echo "Done."
     
+    echo "-> Installing/updating Python dependencies..."
     pip install -r requirements.txt
+    echo "Done."
 else
     echo "Warning: Virtual environment not found at '$VENV_PATH'. Skipping dependency installation."
-    echo "The new server might fail to start."
 fi
 
-echo "Starting new server in tmux session named '$TMUX_SESSION'..."
-tmux new -d -s "$TMUX_SESSION" "cd '$PROJECT_DIR_EXPANDED' && source '$VENV_PATH' && flask run --host=0.0.0.0"
+echo "-> Starting new server in tmux session named '$TMUX_SESSION'..."
+tmux new -s "$TMUX_SESSION" "../start-server.sh"
 
 echo ""
 echo "Redeployment complete!"
 echo "Your site is now running in the background."
+echo "You can check the server console with: tmux attach -t $TMUX_SESSION"
+echo "To detach from the session (and leave it running), press: Ctrl+b, then d"
