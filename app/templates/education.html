@@ -1,64 +1,81 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
     <title>MLH Portfolio - Education</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/education.css') }}">
-    <link rel="stylesheet" href="../static/styles/navbar.css">
-    
-    <link rel='icon' href="{{ url_for('static', filename='img/favicon.ico') }}" type='image/x-icon' />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/education.css') }}"
+    />
+    <link rel="stylesheet" href="../static/styles/navbar.css" />
 
-<body>
+    <link
+      rel="icon"
+      href="{{ url_for('static', filename='img/favicon.ico') }}"
+      type="image/x-icon"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+
+  <body>
     <header class="nav-bar">
-            <div class="nav-logo">
-                <a href="/">
-                    <img src="./static/img/logo.svg" />
-                </a>
-            </div>
-            <ul class="nav-list">
-                <li><a href="/about">About</a></li>
-                <li><a href="/education">Education</a></li>
-                <li><a href="/work">Work</a></li>
-                <li><a href="/hobbies">Hobbies</a></li>
-                 <li><a href="map">Map</a></li>
-            </ul>
+      <div class="nav-logo">
+        <a href="/">
+          <img
+            src="{{ url_for('static', filename='img/logo.svg') }}"
+            alt="MLH Fellowship Logo"
+          />
+        </a>
+      </div>
+      <ul class="nav-list">
+        <li><a href="/about">About</a></li>
+        <li><a href="/education">Education</a></li>
+        <li><a href="/work">Work</a></li>
+        <li><a href="/hobbies">Hobbies</a></li>
+        <li><a href="/map">Map</a></li>
+        <li><a href="/timeline">Timeline</a></li>
+      </ul>
     </header>
     <main>
-        <div class="header">
-            <h1>Our Education</h1>
+      <div class="header">
+        <h1>Our Education</h1>
+      </div>
+
+      <div class="education-section">
+        <!-- JINJA loop -->
+        {% for person, experiences in education_data.items() %}
+
+        <h2>{{ person }}'s Education</h2>
+        <div class="timeline-container">
+          {% for item in experiences %}
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <h3>{{ item.degree }}</h3>
+              <p class="institution">{{ item.institution }}</p>
+              <p class="dates">{{ item.dates }}</p>
+              <p class="description">{{ item.description }}</p>
+            </div>
+            <div class="timeline-icon"><i class="{{ item.icon }}"></i></div>
+          </div>
+          {% endfor %} {# Fin del bucle de experiencias #}
         </div>
 
-        <div class="education-section">
-            <!-- JINJA loop -->
-            {% for person, experiences in education_data.items() %}
-            
-                <h2>{{ person }}'s Education</h2>
-                <div class="timeline-container">
-                    
-                    {% for item in experiences %}
-                        <div class="timeline-item">
-                            <div class="timeline-content">
-                                <h3>{{ item.degree }}</h3>
-                                <p class="institution">{{ item.institution }}</p>
-                                <p class="dates">{{ item.dates }}</p>
-                                <p class="description">{{ item.description }}</p>
-                            </div>
-                            <div class="timeline-icon"><i class="{{ item.icon }}"></i></div>
-                        </div>
-                    {% endfor %} {# Fin del bucle de experiencias #}
-
-                </div>
-
-            {% endfor %} {# Fin del bucle de personas #}
-        </div>
+        {% endfor %} {# Fin del bucle de personas #}
+      </div>
     </main>
     <footer>
-        <p>Made in 2025 by Fiona and Armando</p>
-        <p>MLF Fellowship Production Engineering</p>
+      <p>Made in 2025 by Fiona and Armando</p>
+      <p>MLF Fellowship Production Engineering</p>
     </footer>
-</body>
+  </body>
 </html>

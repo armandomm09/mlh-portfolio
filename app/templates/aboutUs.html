@@ -1,71 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta property="og:title" content="Personal Portfolio">
-    <meta property="og:description" content="Personal Portfolio">
-    <meta property="og:url" content="{{ url }}">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta property="og:title" content="Personal Portfolio" />
+    <meta property="og:description" content="Personal Portfolio" />
+    <meta property="og:url" content="{{ url }}" />
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet">
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
 
-    <link rel="stylesheet" href="../static/styles/aboutUs.css">
-    <link rel="stylesheet" href="../static/styles/navbar.css">
-    <link rel='icon' href='../static/img/favicon.ico' type='image/x-icon' />
+    <link rel="stylesheet" href="../static/styles/aboutUs.css" />
+    <link rel="stylesheet" href="../static/styles/navbar.css" />
+    <link rel="icon" href="../static/img/favicon.ico" type="image/x-icon" />
     <title>MLH Portfolio</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <header class="nav-bar">
-            <div class="nav-logo">
-                <a href="/">
-                    <img src="./static/img/logo.svg" />
-                </a>
-            </div>
-            <ul class="nav-list">
-                <li><a href="/about">About</a></li>
-                <li><a href="/education">Education</a></li>
-                <li><a href="/work">Work</a></li>
-                <li><a href="/hobbies">Hobbies</a></li>
-                 <li><a href="map">Map</a></li>
-            </ul>
+      <div class="nav-logo">
+        <a href="/">
+          <img
+            src="{{ url_for('static', filename='img/logo.svg') }}"
+            alt="MLH Fellowship Logo"
+          />
+        </a>
+      </div>
+      <ul class="nav-list">
+        <li><a href="/about">About</a></li>
+        <li><a href="/education">Education</a></li>
+        <li><a href="/work">Work</a></li>
+        <li><a href="/hobbies">Hobbies</a></li>
+        <li><a href="/map">Map</a></li>
+        <li><a href="/timeline">Timeline</a></li>
+      </ul>
     </header>
     <main>
-        <diV class="header">
-            <h1>About Us</h1>
-        </diV>
-        <div class="container">
-            <section class="about-content">
-                <div class="img-container">
-                    <img src="../static/img/fiona_laygo.png" alt="Picture of Fiona">
-                </div>
-                <div class="text-container">
-                    <h3>Fiona</h3>
-                    <p>I'm an incoming third-year computer science student at Trent University focused on full-stack development and web scraping. I enjoy building with React and TypeScript, and have used tools like Playwright and Selenium. Outside of tech, I love basketball, hackathons, and reading about astrophysics and the universe.</p>
-                </div>
-            </section>
-            <section class="about-content">
-                <div class="img-container">
-                    <img src="../static/img/armando.jpg" alt="Picture of Armando">
-                </div>
-                <div class="text-container">
-                    <h3>Armando</h3>
-                    <p>I'm a Robotics & Digital Systems Engineering student at Tecnológico de Monterrey Puebla with a passion for robotics, AI and cyber physical systems. 
-                        I build web apps in React, mobile experiences in Flutter, and AI-powered solutions in Python/C++. But besides tech I have a deep passion about making music
-                        I think it's the best way to communicate what I feel.
-                    </p>
-                </div>
-            </section>
-        </div>
+      <div class="header">
+        <h1>About Us</h1>
+      </div>
+      <div class="container">
+        <section class="about-content">
+          <div class="img-container">
+            <img src="../static/img/fiona_laygo.png" alt="Picture of Fiona" />
+          </div>
+          <div class="text-container">
+            <h3>Fiona</h3>
+            <p>
+              I'm an incoming third-year computer science student at Trent
+              University focused on full-stack development and web scraping. I
+              enjoy building with React and TypeScript, and have used tools like
+              Playwright and Selenium. Outside of tech, I love basketball,
+              hackathons, and reading about astrophysics and the universe.
+            </p>
+          </div>
+        </section>
+        <section class="about-content">
+          <div class="img-container">
+            <img src="../static/img/armando.jpg" alt="Picture of Armando" />
+          </div>
+          <div class="text-container">
+            <h3>Armando</h3>
+            <p>
+              I'm a Robotics & Digital Systems Engineering student at
+              Tecnológico de Monterrey Puebla with a passion for robotics, AI
+              and cyber physical systems. I build web apps in React, mobile
+              experiences in Flutter, and AI-powered solutions in Python/C++.
+              But besides tech I have a deep passion about making music I think
+              it's the best way to communicate what I feel.
+            </p>
+          </div>
+        </section>
+      </div>
     </main>
     <footer>
-        <p>Made in 2025 by Fiona and Armando</p>
-        <p>MLF Fellowship Production Engineering</p>
+      <p>Made in 2025 by Fiona and Armando</p>
+      <p>MLF Fellowship Production Engineering</p>
     </footer>
-</body>
+  </body>
 </html>

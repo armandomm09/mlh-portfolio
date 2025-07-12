@@ -50,9 +50,15 @@ def get_timeline_post():
             for p in TimelinePost.select().order_by(TimelinePost.created_at.desc())
             ]
     }
+    
+
 @app.route('/')
 def index():
     return render_template('index.html', title="Armando Mac Beath", title2="Fiona", url=os.getenv("URL"))
+
+@app.route('/timeline')
+def timeline():
+    return render_template('timeline.html', title="Timeline", url=os.getenv("URL"))
 
 # Hobbies route which returns the hobbies html page
 @app.route('/hobbies')

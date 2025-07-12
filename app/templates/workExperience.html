@@ -1,110 +1,150 @@
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta property="og:title" content="Personal Portfolio - Work Experience" />
+    <meta property="og:description" content="Our Work Experience" />
+    <meta property="og:url" content="{{ url }}" />
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta property="og:title" content="Personal Portfolio - Work Experience">
-    <meta property="og:description" content="Our Work Experience">
-    <meta property="og:url" content="{{ url }}">
-
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet">
-    
-    <link rel="stylesheet" href="../static/styles/work.css"> 
-    <link rel="stylesheet" href="../static/styles/navbar.css">
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
 
-    <link rel='icon' href='../static/img/favicon.ico' type='image/x-icon' />
+    <link rel="stylesheet" href="../static/styles/work.css" />
+    <link rel="stylesheet" href="../static/styles/navbar.css" />
+
+    <link rel="icon" href="../static/img/favicon.ico" type="image/x-icon" />
     <title>MLH Portfolio - Work Experience</title>
-</head>
+  </head>
 
-<body>
-     <header class="nav-bar">
-            <div class="nav-logo">
-                <a href="/">
-                    <img src="./static/img/logo.svg" />
-                </a>
-            </div>
-            <ul class="nav-list">
-                <li><a href="/about">About</a></li>
-                <li><a href="/education">Education</a></li>
-                <li><a href="/work">Work</a></li>
-                <li><a href="/hobbies">Hobbies</a></li>
-                 <li><a href="map">Map</a></li>
-            </ul>
+  <body>
+    <header class="nav-bar">
+      <div class="nav-logo">
+        <a href="/">
+          <img
+            src="{{ url_for('static', filename='img/logo.svg') }}"
+            alt="MLH Fellowship Logo"
+          />
+        </a>
+      </div>
+      <ul class="nav-list">
+        <li><a href="/about">About</a></li>
+        <li><a href="/education">Education</a></li>
+        <li><a href="/work">Work</a></li>
+        <li><a href="/hobbies">Hobbies</a></li>
+        <li><a href="/map">Map</a></li>
+        <li><a href="/timeline">Timeline</a></li>
+      </ul>
     </header>
     <main>
-        <div class="header">
-            <h1>Our Work Experience</h1>
+      <div class="header">
+        <h1>Our Work Experience</h1>
+      </div>
+
+      <h2>Armando's Experience</h2>
+      <section class="experience-section">
+        <div class="experience-card">
+          <h3>Programming Mentor & Lead Programmer</h3>
+          <div class="job-info">
+            <p class="company">
+              First Robotics Competition (FRC) Team 5887 - Puebla, Mexico
+            </p>
+            <p class="dates">January 2022 - August 2024</p>
+          </div>
+          <ul>
+            <li>
+              Mentored robot programming in Java and developed AI scouting
+              applications using Flutter and Python for FRC team Imperator 5887.
+            </li>
+            <li>
+              Served as lead programmer and driver, managing robot operations,
+              software development, and eventually graduating into the role of
+              programming mentor.
+            </li>
+          </ul>
         </div>
-    
-        <h2>Armando's Experience</h2>
-        <section class="experience-section">
-            
-            <div class="experience-card">
-                <h3>Programming Mentor & Lead Programmer</h3>
-                <div class="job-info">
-                    <p class="company">First Robotics Competition (FRC) Team 5887 - Puebla, Mexico</p>
-                    <p class="dates">January 2022 - August 2024</p>
-                </div>
-                <ul>
-                    <li>Mentored robot programming in Java and developed AI scouting applications using Flutter and Python for FRC team Imperator 5887.</li>
-                    <li>Served as lead programmer and driver, managing robot operations, software development, and eventually graduating into the role of programming mentor.</li>
-                </ul>
-            </div>
 
-            <div class="experience-card">
-                <h3>Software Developer</h3>
-                <div class="job-info">
-                    <p class="company">Kitoka - Puebla, Mexico</p>
-                    <p class="dates">August 2024 - December 2024</p>
-                </div>
-                <ul>
-                    <li>Created a web application for elderly users using React, incorporating speech-to-text features via the OpenAI API and story-sharing capabilities.</li>
-                    <li>Built a user-friendly platform tailored for seniors, leveraging Appwrite for backend services and database management.</li>
-                    <li>Designed Kitoka as a community service project to enable elderly individuals to share and preserve their personal stories.</li>
-                </ul>
-            </div>
+        <div class="experience-card">
+          <h3>Software Developer</h3>
+          <div class="job-info">
+            <p class="company">Kitoka - Puebla, Mexico</p>
+            <p class="dates">August 2024 - December 2024</p>
+          </div>
+          <ul>
+            <li>
+              Created a web application for elderly users using React,
+              incorporating speech-to-text features via the OpenAI API and
+              story-sharing capabilities.
+            </li>
+            <li>
+              Built a user-friendly platform tailored for seniors, leveraging
+              Appwrite for backend services and database management.
+            </li>
+            <li>
+              Designed Kitoka as a community service project to enable elderly
+              individuals to share and preserve their personal stories.
+            </li>
+          </ul>
+        </div>
+      </section>
 
-        </section>
+      <h2>Fiona's Experience</h2>
+      <section class="experience-section">
+        <div class="experience-card">
+          <h3>Student Research Assistant</h3>
+          <div class="job-info">
+            <p class="company">Trent University - Peterborough, Ontario</p>
+            <p class="dates">May 2025 - August 2025</p>
+          </div>
+          <ul>
+            <li>
+              Conducted a comprehensive literature review related to shopping
+              cart abandonment in e-commerce
+            </li>
+            <li>
+              Prepared summaries, visual aids, and assist with academic writing
+              and presentations
+            </li>
+            <li>
+              Organize and synthesize scholarly articles, technical reports, and
+              industry case studies
+            </li>
+            <li>
+              Supported the design of prototype interventions based on research
+              findings
+            </li>
+          </ul>
+        </div>
 
-
-        <h2>Fiona's Experience</h2>
-        <section class="experience-section">
-             
-            <div class="experience-card">
-                <h3>Student Research Assistant</h3>
-                <div class="job-info">
-                    <p class="company">Trent University - Peterborough, Ontario</p>
-                    <p class="dates">May 2025 - August 2025</p>
-                </div>
-                <ul>
-                    <li>Conducted a comprehensive literature review related to shopping cart abandonment in e-commerce</li>
-                    <li>Prepared summaries, visual aids, and assist with academic writing and presentations</li>
-                    <li>Organize and synthesize scholarly articles, technical reports, and industry case studies</li>
-                    <li>Supported the design of prototype interventions based on research findings</li>
-                </ul>
-            </div>
-
-            <div class="experience-card">
-                <h3>Academic Assistant</h3>
-                <div class="job-info">
-                    <p class="company">Trent University - Peterborough, Canada</p>
-                    <p class="dates">September 2024 - April 2025</p>
-                </div>
-                <ul>
-                    <li>Academic Assistant for COIS-2240: Software Design & Modelling in Java (Eclipse) and Umple (UML) (2025 Winter
-                        term) and COIS-1020: Intro to Programming for Computer Science in C# (2024 Fall term)</li>
-                    <li>Provided hands-on guidance to 80+ students in lab settings, ensuring they understood and applied key concepts</li>
-                </ul>
-            </div>
-        </section>
+        <div class="experience-card">
+          <h3>Academic Assistant</h3>
+          <div class="job-info">
+            <p class="company">Trent University - Peterborough, Canada</p>
+            <p class="dates">September 2024 - April 2025</p>
+          </div>
+          <ul>
+            <li>
+              Academic Assistant for COIS-2240: Software Design & Modelling in
+              Java (Eclipse) and Umple (UML) (2025 Winter term) and COIS-1020:
+              Intro to Programming for Computer Science in C# (2024 Fall term)
+            </li>
+            <li>
+              Provided hands-on guidance to 80+ students in lab settings,
+              ensuring they understood and applied key concepts
+            </li>
+          </ul>
+        </div>
+      </section>
     </main>
     <footer>
-        <p>Made in 2025 by Fiona and Armando</p>
-        <p>MLH Fellowship Production Engineering</p>
+      <p>Made in 2025 by Fiona and Armando</p>
+      <p>MLH Fellowship Production Engineering</p>
     </footer>
-</body>
+  </body>
 </html>
