@@ -25,7 +25,7 @@ if [ -f "$VENV_PATH" ]; then
     echo "-> Activating Python virtual environment..."
     source "$VENV_PATH"
     echo "Done."
-    
+
     echo "-> Installing/updating Python dependencies..."
     pip install -r requirements.txt
     echo "Done."

@@ -4,44 +4,34 @@ from flask import Flask, render_template, request
 from dotenv import load_dotenv
 from peewee import *
 from playhouse.shortcuts import model_to_dict
-import pymysql
-
-pymysql.install_as_MySQLdb()
 
 load_dotenv()
-
 app = Flask(__name__)
 
 mydb = MySQLDatabase(
-    database=os.getenv("MYSQL_DATABASE", "myportfoliodb"),
-    user=os.getenv("MYSQL_USER", "mlhportfolio"),
-    password=os.getenv("MYSQL_PASSWORD", ".PAbloarmand0."),   
-    host=os.getenv("MYSQL_HOST", "localhost"),                
-    port=int(os.getenv("MYSQL_PORT", 3306)),
-    # charset="utf8mb4",
+    os.getenv("MYSQL_DATABASE"),
+    user=os.getenv("MYSQL_USER"),
+    password=os.getenv("MYSQL_PASSWORD"),
+    host=os.getenv("MYSQL_HOST"),
+    port=3306,
 )
 
+print(mydb)
 
-
-print("DB:", os.getenv("MYSQL_DATABASE"))
-print("USER:", os.getenv("MYSQL_USER"))
-print("PASSWORD:", os.getenv("MYSQL_PASSWORD"))
-print("HOST:", os.getenv("MYSQL_HOST"))
 
 class TimelinePost(Model):
     name = CharField()
     email = CharField()
     content = TextField()
     created_at = DateTimeField(default=datetime.datetime.now)
-    
+
     class Meta:
         database = mydb
-        
 
-print(mydb)
 
 mydb.connect()
 mydb.create_tables([TimelinePost])
+
 
 @app.route('/api/timeline_post', methods=['POST'])
 def timeline_post():
@@ -52,7 +42,7 @@ def timeline_post():
     
     return model_to_dict(timeline_post)
 
-@app.get('/api/timeline_post', methods=['GET'])
+@app.route('/api/timeline_post', methods=['GET'])
 def get_timeline_post():
     return {
         'timeline_posts': [

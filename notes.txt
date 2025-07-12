@@ -1,0 +1,5 @@
+CREATE USER 'mlhportfolio'@'localhost' IDENTIFIED BY '.PAbloarmand0.';
+GRANT ALL PRIVILEGES ON myportfoliodb.* TO 'mlhportfolio'@'localhost';
+mysql -u mlhportfolio -p -h localhost
+CREATE DATABASE myportfoliodb;
+USE myportfoliodb;
