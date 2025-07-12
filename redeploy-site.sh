@@ -2,20 +2,18 @@
 
 PROJECT_DIR="/root/mlh-portfolio"
 START_SCRIPT="/root/start_server.sh"
-TMUX_SESSION="flask_server"
 
 echo "Starting redeployment process..."
 
 
-echo "-> Stopping any existing tmux sessions..."
-tmux kill-server || true
+echo "-> Stopping portfolio service"
+systemctl stop myportfolio
 echo "Done."
 
-echo "-> Navigating to project directory: $PROJECT_DIR"
 cd "$PROJECT_DIR" || { echo "Error: Project directory not found. Aborting."; exit 1; }
 echo "Done."
 
-echo "-> Fetching the latest code from GitHub..."
+echo "Fetching the latest code from GitHub..."
 git fetch origin
 git reset --hard origin/main
 echo "Done."
@@ -26,15 +24,15 @@ if [ -f "$VENV_PATH" ]; then
     source "$VENV_PATH"
     echo "Done."
 
-    echo "-> Installing/updating Python dependencies..."
+    echo "Updating Python dependencies..."
     pip install -r requirements.txt
     echo "Done."
 else
     echo "Warning: Virtual environment not found at '$VENV_PATH'. Skipping dependency installation."
 fi
 
-echo "-> Starting new server in tmux session named '$TMUX_SESSION'..."
-tmux new-session -d -s flask_server "/root/start_server.sh"
+echo "Restarting portfolio service"
+systemctl start myportfolio
 
 echo ""
 echo "Redeployment complete!"
