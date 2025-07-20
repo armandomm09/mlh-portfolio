@@ -31,3 +31,11 @@ class TestTimelinePost(unittest.TestCase):
             content="Hello world, I'm Jane!"
         )
         assert second_post.id == 2
+
+        posts = list(TimelinePost.select().order_by(TimelinePost.id))
+
+        self.assertEqual(len(posts), 2)
+        self.assertEqual(posts[0].name, 'John Doe')
+        self.assertEqual(posts[0].content, "Hello world, I'm John!")
+        self.assertEqual(posts[1].name, 'Jane Doe')
+        self.assertEqual(posts[1].content, "Hello world, I'm Jane!")
