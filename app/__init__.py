@@ -150,7 +150,7 @@ def education():
     # Render the education template with the education data
     return render_template('education.html', education_data=education_data)
 
-# map route which returns the map html pag
+# map route which returns the map html page
 @app.route('/map')
 def map():
     return render_template('map.html', title="Places we've been", url=os.getenv("URL"))

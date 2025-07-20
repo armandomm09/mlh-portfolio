@@ -32,6 +32,7 @@ class TestTimelinePost(unittest.TestCase):
         )
         assert second_post.id == 2
 
+        #TODO
         posts = list(TimelinePost.select().order_by(TimelinePost.id))
 
         self.assertEqual(len(posts), 2)

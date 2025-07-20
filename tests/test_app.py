@@ -26,16 +26,18 @@ class AppTestCase(unittest.TestCase):
         json_data = response.get_json()
         assert "timeline_posts" in json_data
         assert len(json_data["timeline_posts"]) == 0
+        #TODO
         post_response = self.client.post(
             "/api/timeline_post",
             data={"name": "Alice", "email": "alice@example.com", "content": "First post!"}
         )
+
         assert post_response.status_code == 200
         post_json = post_response.get_json()
         assert post_json["name"] == "Alice"
         assert post_json["email"] == "alice@example.com"
         assert post_json["content"] == "First post!"
-        
+
         response = self.client.get("/api/timeline_post")
         json_data = response.get_json()
         assert len(json_data["timeline_posts"]) == 1
