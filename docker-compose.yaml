@@ -22,6 +22,11 @@ services:
     restart: always 
     env_file:
       - .env
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=mlhportfolio
+      - MYSQL_PASSWORD=.PAbloarmand0.
+      - MYSQL_DATABASE=myportfoliodb
     volumes:
       - mydatabase:/var/lib/mysql
 
