@@ -1,27 +1,36 @@
-version: "3" 
+version: "3.8"
+
 services:
+  mysql:
+    container_name: mysql
+    image: mariadb:latest
+    restart: always
+    env_file:
+      - .env
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      MYSQL_DATABASE:      ${MYSQL_DATABASE}
+      MYSQL_USER:          ${MYSQL_USER}
+      MYSQL_PASSWORD:      ${MYSQL_PASSWORD}
+    volumes:
+      - mydatabase:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   myportfolio:
-    container_name: myportfolio 
+    container_name: myportfolio
     build: .
-    restart: always 
+    restart: always
     env_file:
       - .env
     ports:
       - "5000:5000"
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
 
-
-  mysql:
-    container_name: mysql 
-    image: mariadb 
-    restart: always 
-    env_file:
-      - .env
-    environment:
-      - MARIADB_ROOT_PASSWORD=.PAbloarmand0.
-    volumes:
-      - mydatabase:/var/lib/mysql
-
-volumes: 
+volumes:
   mydatabase:
