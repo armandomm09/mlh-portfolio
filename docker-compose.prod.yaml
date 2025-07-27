@@ -19,11 +19,7 @@ services:
     env_file:
       - .env
     environment:
-      - MYSQL_HOST=mysql
-      - MYSQL_USER=mlhportfolio
-      - MYSQL_PASSWORD=.PAbloarmand0.
-      - MYSQL_DATABASE=myportfoliodb
-      - MYSQL_ROOT_PASSWORD:.PAbloarmand0.
+      - MARIADB_ROOT_PASSWORD=.PAbloarmand0.
     volumes:
       - mydatabase:/var/lib/mysql
 
