@@ -19,3 +19,23 @@ jobs:
       - name: Run redeploy script
         run: |
           /root/mlh-portfolio/scripts/redeploy-site.sh
+
+      - name: Deploy to production
+        run: |
+          echo "Deployment completed successfully"
+          echo "Site is now live at: https://armando-mlh-portfolio.duckdns.org/"
+        environment:
+          name: production
+          url: https://armando-mlh-portfolio.duckdns.org/
+
+      - name: Notify deployment status
+        run: |
+          echo "✅ Deployment to production completed successfully!"
+          echo "🌐 Your portfolio is now live at: https://armando-mlh-portfolio.duckdns.org/"
+          echo "📊 Check the deployment status in the GitHub Actions tab"
+
+      - name: Create deployment
+        uses: actions/deploy@v1
+        with:
+          environment: production
+          url: https://armando-mlh-portfolio.duckdns.org/
