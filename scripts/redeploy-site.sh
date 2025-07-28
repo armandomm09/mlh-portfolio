@@ -18,7 +18,7 @@ git fetch origin
 git reset --hard origin/main
 echo "Done."
 
-docker compose -f docker-compose.prod.yaml up -d --build
+docker compose -f docker-compose.prod.yaml up -d --build --force-recreate
 
 chmod +x /root/mlh-portfolio/scripts/redeploy-site.sh
 echo ""
