@@ -19,7 +19,9 @@ git reset --hard origin/main
 echo "Done."
 
 docker compose -f docker-compose.prod.yaml up -d
+
+chmod +x scripts/redeploy-site.sh
 echo ""
 echo "Redeployment complete!"
 echo "Your site is now running in the background."
-echo "You can check the website at https://armando-mlh-portfolio.duckdns.org:5000/"
+echo "You can check the website at https://armando-mlh-portfolio.duckdns.org/"
