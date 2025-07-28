@@ -18,9 +18,9 @@ git fetch origin
 git reset --hard origin/main
 echo "Done."
 
-docker compose -f docker-compose.prod.yaml up -d
+docker compose -f docker-compose.prod.yaml up -d --build
 
-chmod +x scripts/redeploy-site.sh
+chmod +x /root/mlh-portfolio/scripts/redeploy-site.sh
 echo ""
 echo "Redeployment complete!"
 echo "Your site is now running in the background."
