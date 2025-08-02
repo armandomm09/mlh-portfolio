@@ -6,7 +6,7 @@ NAME="User${RAND}"
 EMAIL="user${RAND}@example.com"
 CONTENT="Test content ${RAND}"
 
-API_BASE="http://armando-mlh-portfolio.duckdns.org:5000/api/timeline_post"
+API_BASE="https://armando-mlh-portfolio.duckdns.org/api/timeline_post"
 
 echo "Creating timeline post with:"
 echo "  name:    $NAME"
