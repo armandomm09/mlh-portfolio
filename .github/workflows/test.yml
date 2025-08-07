@@ -29,5 +29,5 @@ jobs:
       - name: Install Deps
         run: .venv/bin/pip install -r requirements.txt
 
-      - name: Run Test:
+      - name: Run Test
         run: scripts/run_test.sh
