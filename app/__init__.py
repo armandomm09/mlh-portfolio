@@ -82,7 +82,7 @@ def get_timeline_post():
 
 @app.route('/')
 def index():
-    return render_template('index.html', title="Armando Mac Beath", url=os.getenv("URL"))
+    return render_template('index.html', title="Pablo Armando Mac Beath Milian", url=os.getenv("URL"))
 
 @app.route('/timeline')
 def timeline():
