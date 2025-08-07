@@ -1,9 +1,20 @@
 import os
 import datetime
+import sqlite3
 from flask import Flask, render_template, request
 from dotenv import load_dotenv
 from peewee import *
 from playhouse.shortcuts import model_to_dict
+
+# Configure SQLite datetime adapter to avoid deprecation warning
+def adapt_datetime(val):
+    return val.isoformat()
+
+def convert_datetime(val):
+    return datetime.datetime.fromisoformat(val.decode())
+
+sqlite3.register_adapter(datetime.datetime, adapt_datetime)
+sqlite3.register_converter("datetime", convert_datetime)
 
 load_dotenv()
 app = Flask(__name__)
@@ -71,7 +82,7 @@ def get_timeline_post():
 
 @app.route('/')
 def index():
-    return render_template('index.html', title="Armando Mac Beath", title2="Fiona", url=os.getenv("URL"))
+    return render_template('index.html', title="Pablo Armando Mac Beath", title2="Fiona", url=os.getenv("URL"))
 
 @app.route('/timeline')
 def timeline():
