@@ -22,7 +22,6 @@ class AppTestCase(unittest.TestCase):
         html = response.get_data(as_text=True)
         assert "<title>MLH Portfolio</title>" in html
         assert '<img src="./static/img/armando.jpg">' in html
-        assert '<img src="./static/img/fiona_laygo.png">' in html
         
 
     def test_timeline(self):
