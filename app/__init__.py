@@ -110,7 +110,7 @@ def education():
     education_data = {
         "Armando": [
             {
-                "degree": "Primary School Diploma",
+                "degree": "Primary School",
                 "institution": "Andes International School",
                 "dates": "2010 - 2016",
                 "description": "School with an international curriculum.",
