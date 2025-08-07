@@ -82,7 +82,7 @@ def get_timeline_post():
 
 @app.route('/')
 def index():
-    return render_template('index.html', title="Pablo Armando Mac Beath", title2="Fiona", url=os.getenv("URL"))
+    return render_template('index.html', title="Armando Mac Beath", title2="Fiona", url=os.getenv("URL"))
 
 @app.route('/timeline')
 def timeline():
@@ -108,29 +108,6 @@ def about():
 def education():
     # Create a dictionary with education data for each person
     education_data = {
-        "Fiona": [
-            {
-                "degree": "MYP (Middle Years Programme) Certificate",
-                "institution": "International School Suva",
-                "dates": "2016 - 2019",
-                "description": "Completed Middle School at a school with an International Curriculum.",
-                "icon": "fas fa-school"
-            },
-            {
-                "degree": "IB Diploma Program",
-                "institution": "International School Suva",
-                "dates": "2020 - 2022",
-                "description": "Completed the IB (International Baccalaureate) Program with 40 out of 45 points.",
-                "icon": "fas fa-school"
-            },
-            {
-                "degree": "B.S. Computer Science with Honors",
-                "institution": "Trent University",
-                "dates": "2023 - 2027",
-                "description": "Currently on Dean's Honour Roll and co-director of university hackathon.",
-                "icon": "fas fa-school"
-            },
-        ],
         "Armando": [
             {
                 "degree": "Primary School Diploma",
