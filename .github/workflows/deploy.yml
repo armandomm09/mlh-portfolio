@@ -1,21 +1,41 @@
-name: Deploy
+name: Test and Deploy
 
 on:
   push:
     branches:
       - main
   workflow_dispatch:
-  workflow_run:
-    workflows: ["Run Test"]
-    types: [completed]
 
-jobs:
+jobs: 
+  test:
+    runs-on: ubuntu-latest
+    name: Run Tests
+    env: 
+      TESTING: true
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4 
+
+      - name: Setup Python
+        uses: actions/setup-python@v5 
+        with:
+          python-version: '3.11' 
+
+      - name: Setup Python Venv
+        run: python3 -m venv .venv
+
+      - name: Install Dependencies
+        run: .venv/bin/pip install -r requirements.txt
+
+      - name: Run Test
+        run: scripts/run_test.sh
+
   deploy:
     name: "Deploy to VPS"
     runs-on: ubuntu-latest
-    needs: test
+    needs: test 
     steps:
-      - name: COnfigure SSH
+      - name: Configure SSH
         run: |
           mkdir -p ~/.ssh/
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/deploy-key.pem
@@ -33,7 +53,8 @@ jobs:
           SSH_IP: ${{ secrets.SSH_IP }}
 
       - name: Deploy site
-        run: ssh my-vps 'cd ${{ secrets.PROJECT_ROOT }} && scripts/redeploy-site.sh && docker ps && docker ps && curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" -d "content=🚀 Deployment Successful"'
+        run: ssh my-vps 'cd ${{ secrets.PROJECT_ROOT }} && scripts/redeploy-site.sh && docker ps && curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" -d "content=🚀 Deployment Successful"'
+        
       - name: Run cleanup if deploy failed
         if: failure() 
         run: curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" -d "content=❌ Deployment Failed"
